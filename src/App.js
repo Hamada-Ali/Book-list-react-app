@@ -1,25 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react"
+import BookCreate from './components/BookCreate'
+import BookList from "./components/BookList"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App  = () => {
+    const [init, update] = useState([])
+
+    const deletedBooks = (id) => {
+        const deleteFilter = init.filter((book) => {
+            return book.id !== id
+        })
+        update(deleteFilter)
+    }
+
+    const create = (title) => {
+        const newBook = [...init, {title, id:Math.floor(Math.random() * 1000)}]
+        update(newBook)
+        console.log(init.length, newBook)
+    }
+
+    const editTitle = (id, newTitle) => {
+        const allBooks = init.map((book) => {
+            if(book.id === id) {
+                return {...book, title:newTitle}
+            }
+            return book
+        })
+        update(allBooks)
+    }
+
+    return (
+        <div className="app">
+            <h1>Reading List:</h1>
+            <BookCreate onCreate={create}/>
+            <BookList books={init}  onDelete={deletedBooks} onEdit={editTitle}/>
+        </div>
+    )
 }
 
-export default App;
+export default App
