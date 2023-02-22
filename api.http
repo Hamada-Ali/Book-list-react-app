@@ -1,0 +1,40 @@
+# API Request for our local API ( server-json )
+# IMPORTANT NOTE: Make Sure you enable http services in windows features
+# OR change the host from localhost to 0.0.0.0
+# NOTE 3 # means you want to make new request
+
+
+# Get all data from API
+GET http://localhost:3001/books HTTP/1.1
+Content-Type:application/json
+
+###
+
+
+# Store data into API
+POST http://localhost:3001/books HTTP/1.1
+Content-Type: application/json
+
+{
+    "title": "dark night"
+}
+
+
+###
+
+
+# Update data inside API
+PUT http://localhost:3001/books/2 HTTP/1.1
+Content-Type: application/json
+
+{
+    "title": "harry potter22"
+}
+
+
+###
+
+
+# Delete data from API
+DELETE http://localhost:3001/books/2 HTTP/1.1
+Content-Type: application/json
