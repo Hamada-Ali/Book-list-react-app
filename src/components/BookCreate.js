@@ -1,7 +1,9 @@
 import { useState } from "react";
+import useBookContext from "./hooks/useBookContext";
 
-const BookCreate = ({onCreate}) => {
+const BookCreate = () => {
     const [intVal, updatedVal] = useState("");
+    const {create} = useBookContext()
 
     const changeValue = (e) => {
         const val = e.target.value;
@@ -10,7 +12,7 @@ const BookCreate = ({onCreate}) => {
 
     const send = (e) => {
         e.preventDefault()
-        onCreate(intVal)
+        create(intVal)
     }
 
     return (

@@ -1,8 +1,10 @@
 import { useState } from "react";
+import useBookContext from "./hooks/useBookContext";
 
-const BookEdit = ({book, onEdit, onSubmit}) => {
+const BookEdit = ({book,  onSubmit}) => {
 
     const [initVal, updateVal] = useState(book.title)
+    const {editTitle} = useBookContext()
 
     const changeInputVal = (e) => {
         updateVal(e.target.value)
@@ -10,7 +12,7 @@ const BookEdit = ({book, onEdit, onSubmit}) => {
 
     const sumbitRequest = (e) => {
         e.preventDefault()
-        onEdit(book.id,initVal)
+        editTitle(book.id,initVal)
         onSubmit()
     }
 

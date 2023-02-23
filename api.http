@@ -1,7 +1,8 @@
+# This Page just for testing our API ( REST API Client VS Tool)
 # API Request for our local API ( server-json )
 # IMPORTANT NOTE: Make Sure you enable http services in windows features
 # OR change the host from localhost to 0.0.0.0
-# NOTE 3 # means you want to make new request
+# NOTE ( 3 # ) means you want to make new request after it
 
 
 # Get all data from API
