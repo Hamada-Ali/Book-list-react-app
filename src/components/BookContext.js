@@ -1,7 +1,7 @@
 // context system 
 import { useState } from "react";
 import { createContext } from "react";
-import { useEffect } from "react";
+import { useEffect, useCallback } from "react";
 import axios from "axios";
 
 
@@ -12,10 +12,10 @@ import axios from "axios";
 
         const [init, update] = useState([])
 
-        const fetch = async () => {
+        const fetch = useCallback(async () => {
             const theData = await axios.get("http://localhost:3001/books")
              update(theData.data)
-    }
+    }, [])
 
         const deletedBooks = async (id) => {
             const deleteRequest = await axios.delete(`http://localhost:3001/books/${id}`)

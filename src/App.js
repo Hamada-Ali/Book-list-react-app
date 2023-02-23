@@ -9,7 +9,7 @@ const App  = () => {
     
     useEffect(() => {
         fetch()
-    }, [])
+    }, [fetch])
 
     return (
         <div className="app">
